@@ -1,0 +1,15 @@
+.button-container{
+    height:100%;
+    display:flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    .button{
+        box-shadow: 0 1px 0 rgba(255,255,255, 0.3), inset 0 1px 0 rgba(255,255,255, 0.3);
+        height: 90vw;
+        width: 90vw;
+        background-color: red;
+        border-radius: 50%;
+        display: inline-block;
+    }
+}

@@ -5,15 +5,17 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-list>
-    <ion-item>
-        <ion-label>Email</ion-label>
-        <ion-input [(ngModel)]="email"></ion-input>
-    </ion-item>
-    <ion-item>
-        <ion-label>password</ion-label>
-        <ion-input [(ngModel)]="password"></ion-input>
-    </ion-item>
-  </ion-list>
-  <ion-button expand="block" (click)="signin()">Signin</ion-button>
+  <form #f="ngForm" (ngSubmit)="signin()">
+      <ion-list>
+        <ion-item>
+            <ion-label>Email</ion-label>
+            <ion-input [(ngModel)]="email" name="email" required type="email" email></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>password</ion-label>
+            <ion-input [(ngModel)]="password" name="password" required type="password"></ion-input>
+        </ion-item>
+      </ion-list>
+    <ion-button expand="block" type="submit" [disabled]="!f.valid">Signin</ion-button>
+  </form>
 </ion-content>

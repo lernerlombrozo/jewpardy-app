@@ -7,6 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { environment } from '../environments/environment';
 import * as firebase from 'firebase/app';
 import { AuthService } from './auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,7 @@ import { AuthService } from './auth/auth.service';
 })
 export class AppComponent {
   constructor(
+    public router: Router,
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
@@ -28,15 +30,17 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       firebase.initializeApp(environment.firebaseConfig);
-      firebase.auth().onAuthStateChanged(function(user) {
+      firebase.auth().onAuthStateChanged((user)=> {
         if (user) {
           // User is signed in.
+          console.log('user is signed in');
           this.authService.email = user.email;
           this.authService.uid = user.uid;
+          this.router.navigateByUrl("/stopper");
           // ...
         } else {
           // User is signed out.
-
+          this.router.navigateByUrl("/auth");
           // ...
         }
       });
