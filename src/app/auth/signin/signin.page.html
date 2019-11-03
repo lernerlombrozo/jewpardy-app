@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>signin</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+        <ion-label>Email</ion-label>
+        <ion-input [(ngModel)]="email"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label>password</ion-label>
+        <ion-input [(ngModel)]="password"></ion-input>
+    </ion-item>
+  </ion-list>
+  <ion-button expand="block" (click)="signin()">Signin</ion-button>
+</ion-content>
